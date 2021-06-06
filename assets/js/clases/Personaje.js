@@ -43,7 +43,7 @@ class Personaje {
    //importante recordar que se le debe agregar el set Poder
 
 }
-//console.log (new Personaje("goku","..", 1234, "wewe"))
+//console.log (new Personaje("goku","..", 1234, "wewe"));
 //y agregamos el script type src Personaje.js en el html para poder verlo en consola
 // veo si corre bien y si lo hace elimino el console.log
 

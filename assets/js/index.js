@@ -4,14 +4,14 @@ import { Saiyajin, Humano } from "./clases/Razas.js";
 
 let participantes = []   //[] porque son varios participantes
 
-//funcion para que al hacer clicl en el botonRegistrar se agreguen el nombre, raza y  preview
+//funcion para que al hacer click en el botonRegistrar se agreguen el nombre, raza y  preview
 document.getElementById("btnRegistrar").addEventListener("click", () => {
 
     let nombre  = document.getElementById("nombre"); //nombre de id del html linea 26
     let raza  = document.getElementById("raza");
     let previewElement = document.getElementById("preview"); //
     let imagenSrcBg = previewElement.style.backgroundImage; //obtener el fondo
-    let imgSrc = imagenSrcBg.slice(5, imagenSrcBg.length -2);    // para saque la direccion del string completo del backgroundImage
+    let imgSrc = imagenSrcBg.slice(5, imagenSrcBg.length - 2);    // para saque la direccion del string completo del backgroundImage
     let ki = document.getElementById("poderPelea"); //poderPelea que podemos contrar por esa id en el Html
 
     //creacion de nuevo participante:
@@ -39,6 +39,6 @@ document.getElementById("btnRegistrar").addEventListener("click", () => {
 //Una vez teniendo la instancia del peleador, procederemos a realizar un push en el arreglo participantes que creamos de forma global y le pasamos como argumento nuevo participante
 
     participantes.push(nuevoParticipante);
-    //console.log(participantes);
+    //console.log(participantes); //con console.log confirmaremos que se esta agregando un nuevo participante. poniendo ademas en el html la direccion del index.js
 
 });

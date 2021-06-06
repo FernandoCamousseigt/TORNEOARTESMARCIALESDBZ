@@ -9,7 +9,7 @@ class Saiyajin extends Personaje {
     
     Transformacion(){
         let poder = this.getPoder();
-        this.setPoder( parseInt(poder *1.8));  //ejecuta el setPoder, pasando como argumento parseint de la variable poder x 1.8 ... multiplica el poder actual * 1.8 (o aumento del 80%)
+        this.setPoder( parseInt(poder * 1.8));  //ejecuta el setPoder, pasando como argumento parseint de la variable poder x 1.8 ... multiplica el poder actual * 1.8 (o aumento del 80%)
     }
 }
 
@@ -23,11 +23,12 @@ class Humano extends Personaje {
     
     Coraje() {
         let poder = this.getPoder();
-        this.setPoder( parseInt(poder *1.2));  //ejecuta el setPoder, pasando como argumento parseint de la variable poder x 1.8 ... multiplica el poder actual * 1.2 (o aumento del 20%)
+        this.setPoder( parseInt(poder * 1.2));  //ejecuta el setPoder, pasando como argumento parseint de la variable poder x 1.8 ... multiplica el poder actual * 1.2 (o aumento del 20%)
     }
 }
 
 //hago console.log para probar. y agrego el script en html para enlazar el archivo razas.js.  por ejemplo console.log(new Humano("krillin", "...", 1234, "..."));  en prototipo debe aparecer el metodo Coraje. si funciona entonces lo borro y agrego export
+//console.log(new Humano("krillin", "...", 1234, "..."));
 
 export { Saiyajin, Humano };
 
