@@ -22,7 +22,7 @@ document.getElementById("btnRegistrar").addEventListener("click", () => {
     if (raza.value == "Saiyajin"){
         nuevoParticipante = new Saiyajin(
             nombre.value, 
-            imgSrc.value, 
+            imgSrc, //No necesita .value porque ya es la url
             ki.value, 
             raza.value
             );
@@ -30,7 +30,7 @@ document.getElementById("btnRegistrar").addEventListener("click", () => {
     } else if (raza.value == "Humano"){
         nuevoParticipante = new Humano(
             nombre.value, 
-            imgSrc.value, 
+            imgSrc, //No necesita .value porque ya es la url
             ki.value, 
             raza.value
             );
@@ -41,4 +41,39 @@ document.getElementById("btnRegistrar").addEventListener("click", () => {
     participantes.push(nuevoParticipante);
     //console.log(participantes); //con console.log confirmaremos que se esta agregando un nuevo participante. poniendo ademas en el html la direccion del index.js
 
+    //A continuacion agregamos la funcion reload table. despues del push para que se recargue despues del peleador.  agregamos reloadTable aqui porque queremos que cada vez que se registre un nuevo participante se recargue la tabla
+    reloadTable();
+
 });
+
+//Ahora crearemos una tabla de Participantes:
+//funcion que tome todos los participantes del arreglo participantes que ya creamos y que llenamos en cada click de participar y lo muestre en una tarjeta de bootstrap. Será la funcion siguiente:
+
+const reloadTable = () => {
+    const participantesTemplate = document.getElementById("Participantes");         //similar a la creacion del template en las imagenes. de crear un string largo con elementos html.  //participantes linea 77 html que es la tabla.
+    participantesTemplate.innerHTML = ""; //ahora se le incluye las tarjetas correspondientes a cada peleador.  // se pone .innerHTML=""  para limpiar el espacio previo y no se vaya acumulando. por lo tanto se vaya sobreescribiendo
+    participantes.forEach ((p, i) => {   // .forEach para recorrer el arreglo participantes. parametros son personaje (p) y el indice (i).
+        //vamos a concatenar a participantesTemplate (la tabla) con el template de bootstrap, que es una carta con data-fighter. los atributos data permiten colocar una variable de forma personalizada a un elemento html para su manipulacion con JS y lo necesitamos hacer con una funcion que agregaremos al final que sera la ubicacion del peleador más fuerte. 
+        participantesTemplate.innerHTML += `  
+        <div class="px-3 pb-2 participante" data-fighter=" ${p.getNombre()}">
+            <div class="card">
+            <img
+                src="${p.getImg()}"
+                class="card-img-top"
+            />
+            <div class="card-body">
+                <h4 class="card-title">${ p.getNombre()}  </h4>
+                <hr class="w-50 mx-auto">  
+                <h6 class="card-text">Raza: ${ p.getRaza() } </h6>  
+                <h6 class="card-text">Poder de pelea: <span class="text-danger"> ${p.getPoder()} </span> </h6> 
+                <button class="btn btn-outline-warning" onclick="activarHabilidad('${i}')"> Habilidad Especial </button>        
+        
+            </div>
+            </div>
+        </div>
+
+        `;   
+    })   
+
+};
+
