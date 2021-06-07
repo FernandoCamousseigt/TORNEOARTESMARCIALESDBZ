@@ -93,3 +93,19 @@ const reloadTable = () => {
 
 };
 
+//HABILIDAD ESPECIAL
+//Es que cuando el usuario haga click en el boton, se incremente el poder de pelea. Es por ello que en el template de mas arriba, en la linea 85 viene con onclick="activarHabilidad"
+// Ahora crearemos la funcion. Como estamos trabajando con SCRIPTS de tipo MODULO, no vamos a poder una funcion como ECMAScript5 ni como ES6, porque no lo va a reconocer. cuando son tipo scripts tipo modulo el SCOPE es DIFerente
+//Entonces agregaremos al objeto windows,que es una variable global, le agregaremos el metodo ActivarHabilidad. que recibira como parametro la i , que en este caso corresponde al indice de esta iteracion forEach del arreglo participantes
+
+window.activarHabilidad = (i) => {
+    const participante = participantes [i]    //ubicar a ese peleador a traves del indice, ese peleador que se selecciono y se hizo click en el boton
+    if (participante.getRaza() == "Saiyajin"){     
+        participante.Transformacion();               //metodo en caso de que sea saiyajin
+    } else if (participante.getRaza() == "Humano"){
+        participante.Coraje();                        //metodo en caso de que sea humano
+    }
+    reloadTable();                                    //para recargar la tabla
+};
+
+
