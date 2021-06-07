@@ -36,13 +36,29 @@ document.getElementById("btnRegistrar").addEventListener("click", () => {
             );
     }
 
+//VALIDACION
+//Para colocar una validacion rapida, vamos a condicionar que todos los campos que el usuario tenga que especificar tengan valor, que se consideren TRUE dentro de un IF. 
+//Para ello ANTES de hacer el PUSH al arreglo de participantes (nuevoParticipante), agregaremos el siguiente IF:
+    if(raza.value && nombre.value && ki.value && imagenSrcBg){  // si estos valores se consideran true entonces que ingresa un nuevo participante
+        participantes.push(nuevoParticipante);
+            
+        nombre.selectedIndex = 0    //Linea que para que despues de que uno agregue el peleador el selector nombre del formulario vuelva a su primer option, que seria el que dice en el html linea 27 <option disabled selected> Seleccione un personaje</option>
+        raza.selectedIndex = 0 //lo mismo para raza
+        previewElement.style.backgroundImage = "none"; //none para que se quite la imagen del peleador
+        imagenSrcBg = previewElement.style.backgroundColor = "#f0f0f0"  //volver a la imagen con el color nativo del css
+        ki.value = "";  //para que se vea vacio lo ponemos como un string vacio ("")   ya que se trata de un input
+            reloadTable();   //A continuacion agregamos la funcion reload table. despues del push para que se recargue despues del peleador.  agregamos reloadTable aqui porque queremos que cada vez que se registre un nuevo participante se recargue la tabla    //reloadtable aqui, porque es en el caso de exito ( o true)
+
+    }else{
+        alert("Faltan datos por llenar")
+    }
+
 //Una vez teniendo la instancia del peleador, procederemos a realizar un push en el arreglo participantes que creamos de forma global y le pasamos como argumento nuevo participante
 
-    participantes.push(nuevoParticipante);
+    //participantes.push(nuevoParticipante);
     //console.log(participantes); //con console.log confirmaremos que se esta agregando un nuevo participante. poniendo ademas en el html la direccion del index.js
 
-    //A continuacion agregamos la funcion reload table. despues del push para que se recargue despues del peleador.  agregamos reloadTable aqui porque queremos que cada vez que se registre un nuevo participante se recargue la tabla
-    reloadTable();
+
 
 });
 
