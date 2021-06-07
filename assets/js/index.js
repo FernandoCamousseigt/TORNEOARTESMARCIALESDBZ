@@ -71,8 +71,8 @@ const reloadTable = () => {
     participantes.forEach ((p, i) => {   // .forEach para recorrer el arreglo participantes. parametros son personaje (p) y el indice (i).
         //vamos a concatenar a participantesTemplate (la tabla) con el template de bootstrap, que es una carta con data-fighter. los atributos data permiten colocar una variable de forma personalizada a un elemento html para su manipulacion con JS y lo necesitamos hacer con una funcion que agregaremos al final que sera la ubicacion del peleador más fuerte. 
         participantesTemplate.innerHTML += `  
-        <div class="px-3 pb-2 participante" data-fighter=" ${p.getNombre()}">
-            <div class="card">
+    <div class="px-3 pb-2 participante" data-fighter="${p.getNombre()}">
+        <div class="card">
             <img
                 src="${p.getImg()}"
                 class="card-img-top"
@@ -85,10 +85,10 @@ const reloadTable = () => {
                 <button class="btn btn-outline-warning" onclick="activarHabilidad('${i}')"> Habilidad Especial </button>        
         
             </div>
-            </div>
         </div>
+    </div>
 
-        `;   
+`;   
     })   
 
 };
@@ -122,16 +122,16 @@ document.getElementById("btnMasFuerte").addEventListener("click", () => {
 });
 
 
-/* ////QUIEN ES EL MAS FUERTE
+/* ////QUIEN ES EL MAS FUERTE  EXPLICACION:
 
 document.getElementById("btnMasFuerte").addEventListener("click", () => {       //manipulacion del DOM, boton en html linea 73 con id= btnMasFuerte  y evento click que ejecuta el siguiente callback:
     const masFuerte = participantes.sort(      // sort es para ordenar elementos dentro de un arreglo
         (a, b) => b.getPoder() - a.getPoder()     //entonces con esa formula los ordeno de Mayor a menor. por lo tanto el 1er elemento del arreglo será el peleador con mayor poder de pelea.
     )[0];                                         //[0]  indice 0 es para indicar que es el 1er elemento dentro del arreglo
-    const nombre = masFuerte.getNombre();         // obtenemos el nombre con el getter. getNombre porque corresponde al del template de data-fighter (linea 74 de este index.js) para poder ubicar especificamente este div correspondiente al peleador dentro de la tabla de participantes. 
+    const nombre = masFuerte.getNombre();         // obtenemos el nombre con el getter. getNombre porque corresponde al del template de data-fighter (linea 74 de este index.js) para poder ubicar especificamente el div correspondiente al peleador dentro de la tabla de participantes. 
 
     document.querySelector(`[data-fighter='${nombre}'] div`).style.boxShadow = 
-    "0px 0px 5px 1px yellow";  // al div que esta dentro de este div, o sea ala carta( card)  se le da con el style un box shadow de esos pixeles y color amarillo.
+    "0px 0px 5px 1px yellow";  // al div que esta dentro de este div, o sea a la carta( div class = "card" )  se le da con el style un box shadow de esos pixeles y color amarillo.
 
 });
 
